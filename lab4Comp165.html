@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="lab4comp165.js" defer></script>
+    <title>Calculator</title>
+</head>
+<body>
+    <h1>Scientific Calculator</h1>
+    <label>Math:</label>
+    <input id="outputhere" placeholder="input expression here" type="text"/>
+    <br><br>
+    <button id="add" onclick="values('add', 'outputhere')">+</button>
+    <button id="subtract" onclick="values('subtract', 'outputhere')">-</button>
+    <button id="product" onclick="values('product', 'outputhere')">*</button>
+    <button id="divide" onclick="values('divide', 'outputhere')">/</button>
+    <button id="open-parenthesis" onclick="values('open-parenthesis', 'outputhere')">(</button>
+    <button id="close-parenthesis" onclick="values('close-parenthesis', 'outputhere')">)</button>
+    <br><br>
+    <button id="no-0" onclick="values('no-0', 'outputhere')">0</button>
+    <button id="no-1" onclick="values('no-1', 'outputhere')">1</button>
+    <button id="no-2" onclick="values('no-2', 'outputhere')">2</button>
+    <button id="no-3" onclick="values('no-3', 'outputhere')">3</button>
+    <button id="no-4" onclick="values('no-4', 'outputhere')">4</button>
+    <button id="no-5" onclick="values('no-5', 'outputhere')">5</button>
+    <br><br>
+    <button id="no-6" onclick="values('no-6', 'outputhere')">6</button>
+    <button id="no-7" onclick="values('no-7', 'outputhere')">7</button>
+    <button id="no-8" onclick="values('no-8', 'outputhere')">8</button>
+    <button id="no-9" onclick="values('no-9', 'outputhere')">9</button>
+    <button id="decimal" onclick="values('decimal', 'outputhere')">.</button>
+    <br><br>
+    <button id="delete" onclick="working('delete', 'outputhere')"  >delete</button>
+    <button id="clear" onclick="working('clear', 'outputhere')">clear</button>
+    <button id="equals" onclick="working('equals', 'outputhere')">=</button>
+    <br><br>
+    <p id="show_exp"></p><br>
+    <p id="show_ans"></p>
+
+    <br>
+</body>
+</html>
