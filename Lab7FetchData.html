@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-time Chat Application</title>
+    <script type="module">
+        const databaseUrl = 'https://khsrealtime-default-rtdb.firebaseio.com/chatMsg.json'; 
+
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('button').addEventListener('click', sendMessage);
+            displayAllMessages();
+        });
+
+        async function sendMessage() {
+            const usernameInput = document.querySelector('#username');
+            const messageInput = document.querySelector('#message');
+            const categorySelect = document.querySelector('#category');
+
+            const username = usernameInput.value;
+            const message = messageInput.value;
+            const category = categorySelect.value;
+
+            if (username || message) {
+                const timestamp = new Date();
+                const data = { username, message, timestamp, category };
+
+                try {
+                    const response = await fetch(databaseUrl, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(data)
+                    });
+
+                    if (!response.ok) {
+                        throw new Error('Failed to send message');
+                    }
+                    messageInput.value = '';
+                    usernameInput.value = '';
+                } catch (error) {
+                    console.error('Error sending message:', error);
+                }
+            }
+        }
+
+        async function displayAllMessages() {
+            try {
+                const response = await fetch(databaseUrl);
+                const data = await response.json();
+                const dataContainer = document.querySelector('#messages');
+                let messagesHTML = "<h2>Messages</h2>";
+
+                for (const postId in data) {
+                    const post = data[postId];
+                    const timestamp = new Date(post.timestamp).toLocaleString("en-US", { timeZone: "America/Vancouver" });
+                    const category = post.category || 'General';
+                    messagesHTML += `
+                        <p>${timestamp} - ${category}</p>
+                        <p><u><strong>${post.username}</strong></u>: ${post.message}</p><br>
+                    `;
+                }
+
+                dataContainer.innerHTML = messagesHTML;
+
+                // Subscribe to real-time updates
+                const databaseRef = new EventSource(databaseUrl);
+                databaseRef.addEventListener('put', async (event) => {
+                    try {
+                        const newData = JSON.parse(event.data);
+                        const messageData = newData.data;
+                        const time = new Date(messageData.timestamp).toLocaleString("en-US", { timeZone: "America/Vancouver" });
+                        const category = messageData.category || 'General';
+                        const newMessageHTML = `
+                            <p>${time} - ${category}</p>
+                            <p><u><strong>${messageData.username}</strong></u>: ${messageData.message}</p><br>
+                        `;
+                        dataContainer.innerHTML += newMessageHTML;
+                    } catch (error) {
+                        console.error('Error handling real-time update:', error);
+                    }
+                });
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Real-time Chat Application</h1>
+    <div>
+        <input type="text" id="username" placeholder="Enter your username">
+        <input type="text" id="message" placeholder="Enter your message">
+        <select id="category">
+            <option value="General">General</option>
+            <option value="Priority">Priority</option>
+        </select>
+        <button>Send</button>
+    </div>
+    <p id="messages"></p>
+</body>
+</html>
