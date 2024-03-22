@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS variable and function</title>
+    </head>
+    <body>
+        <p>We love math! Let's calculate the average.</p>
+        <label>Your first number: </label>
+        <input type="text" id="first_val" value="0"/>
+        <br>
+        <label>Your second number: </label>
+        <input type="text" id="second_val" value="0"/>
+
+        <br>
+        <button id="result">Average:</button>
+        <span id="average">0</span> 
+
+        <script src="lab7comp165.js"></script>
+    </body>
+</html>
