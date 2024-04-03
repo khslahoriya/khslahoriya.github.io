@@ -39,10 +39,10 @@
 }
 
 
-    .frame-container:nth-child(odd) img.button-image {
-        width: 200px; /* Set a fixed width for the first image */
-        height: auto; /* Let the height adjust automatically to maintain aspect ratio */
-    }
+.frame-container:nth-child(odd) img.button-image {
+    max-width: 100%; /* Set maximum width to ensure responsiveness */
+    height: auto; /* Let the height adjust automatically to maintain aspect ratio */
+}
 
     .button {
         display: block;
@@ -93,14 +93,32 @@
     .visible {
         display: block !important; /* Show the details when visible class is added */
     }
+    @media screen and (max-width: 768px) {
+    /* CSS rules for screens smaller than 768px (e.g., tablets and mobile phones) */
+    .frame-container {
+        /* Adjust margins or padding as needed */
+        margin-top: 10px;
+    }
+}
 
 </style>
 </head>
 <body>
-    <video autoplay muted loop id="background-video">
+    <video autoplay muted loop playsinline id="background-video">
         <source src="Stock_web.mp4" type="video/mp4">
         Your browser does not support HTML5 video.
     </video>
+    <img src="fallback-image.jpg" alt="Fallback Image" id="fallback-image">
+    
+    <script>
+        // JavaScript to hide fallback image when video is supported
+        var video = document.getElementById('background-video');
+        var fallbackImage = document.getElementById('fallback-image');
+        video.oncanplay = function() {
+            fallbackImage.style.display = 'none';
+        };
+    </script>
+    
     <h1>Stock Website</h1>
     
     <p class="details">Hi everyone, welcome to this website. This website provides information about stock prices and stock charts.</p>
