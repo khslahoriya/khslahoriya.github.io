@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Prices</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-color: rgba(0, 0, 0, 0.5); /* Black with 50% opacity */
+        color: white; /* Set text color to white */
+    }
+    #background-video {
+        position: fixed;
+        right: 0;
+        bottom: 0;
+        min-width: 100%;
+        min-height: 100%;
+        z-index: -1; /* Place the video behind everything else */
+    }
+    .frame-container {
+        text-align: center; /* Center-align the content inside the container */
+        margin-top: 20px; /* Add some space between the containers */
+    }
+
+    .button-container {
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    margin-top: 20px;
+}
+
+.button-info {
+    display: flex;
+    align-items: center; /* Align items vertically centered */
+    justify-content: space-between;
+    margin-left: 20px; /* Adjust left margin to create space between image and button */
+}
+
+
+    .frame-container:nth-child(odd) img.button-image {
+        width: 200px; /* Set a fixed width for the first image */
+        height: auto; /* Let the height adjust automatically to maintain aspect ratio */
+    }
+
+    .button {
+        display: block;
+        background-color: #09e2e2;
+        color: white;
+        text-align: center;
+        padding: 10px;
+        text-decoration: none;
+        cursor: pointer;
+        border-radius: 25px; /* Make the button round */
+        width: 200px; /* Set the width of the button */
+        margin-top: 10px; /* Add some space between the image and the button */
+        margin-bottom: 20px; /* Add some space between the button and the paragraph */
+    }
+
+    .button:hover {
+        background-color: #45a049;
+    }
+    footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #333;
+    color: white;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+    h1 {
+        text-align: center;
+        margin-top: 50px;
+        font-size: 3em; /* Adjust the font size as needed */
+        background-color: rgba(0, 0, 0, 0.1); /* Black with 50% opacity */
+        padding: 10px; /* Add some padding to the heading */
+    }
+
+    p.details {
+        text-align: center; /* Center-align the introduction paragraph */
+        font-size: 1em;
+        margin-top: 10px;
+    }
+
+    ol.details {
+        text-align: left; /* Align ordered list text to the left */
+        display: none; /* Hide the ordered list initially */
+    }
+
+    .visible {
+        display: block !important; /* Show the details when visible class is added */
+    }
+
+</style>
+</head>
+<body>
+    <video autoplay muted loop id="background-video">
+        <source src="Stock_web.mp4" type="video/mp4">
+        Your browser does not support HTML5 video.
+    </video>
+    <h1>Stock Website</h1>
+    
+    <p class="details">Hi everyone, welcome to this website. This website provides information about stock prices and stock charts.</p>
+    
+    <div class="button-container">
+        <button class="button" id="toggleButton" onclick="toggleDetails()">What is a Stock</button>
+    </div>
+    
+    <p id="details" class="details" style="display: none;">Stocks, also known as equities, represent ownership shares in a corporation. When you buy stocks, you become a shareholder in that company, which entitles you to a portion of the company's assets and earnings. Here are some key points about stocks:</p>
+    
+    <ol id="listDetails" class="details" style="display: none;">
+        <li> Ownership: Buying stocks means owning a part of the company. Shareholders have voting rights and may receive dividends if the company distributes profits. </li>
+        <li>Risk and Return: Stocks offer the potential for high returns but also come with higher risk compared to other investments. The value of stocks can fluctuate due to various factors, including market conditions, company performance, and economic factors. </li>
+        <li> Types of Stocks: There are two main types of stocks: common stocks and preferred stocks. Common stocks represent ownership in a company and typically come with voting rights. Preferred stocks, on the other hand, usually do not have voting rights but have a higher claim on assets and earnings compared to common stocks. </li>
+        <li> Stock Exchanges: Stocks are traded on stock exchanges, such as the New York Stock Exchange (NYSE) or the NASDAQ. These exchanges provide a platform for buying and selling stocks. </li>
+        <li> Stock Indices: Stock indices, such as the S&P 500 or the Dow Jones Industrial Average, track the performance of a specific group of stocks. They are used as benchmarks to measure the overall performance of the stock market. </li>
+        <li> Diversification: Investing in a variety of stocks can help reduce risk. Diversification involves spreading investments across different industries, sectors, and geographic regions. </li>
+        <li> Long-Term Investment: Stocks are often considered a long-term investment. Historically, the stock market has provided higher returns compared to other investments over the long term, but past performance is not indicative of future results. </li>
+    </ol>
+    
+    <div class="frame-container">
+        <div class="button-container">
+            <img src="Stockpriceslaptop.png" alt="Stock Data" class="button-image" style="width: 750px; height: 450px;">
+            <div class="button-info">
+                <h3>Stock Data</h3>
+                <p>This section provides access to detailed stock data including prices, volumes, and other relevant information.</p>
+                <a href="stock-data.html" class="button">Explore</a>
+            </div>
+        </div>
+    </div>
+    
+    <div class="frame-container">
+        <div class="button-container">
+            <img src="Stockchartlaptop.png" alt="Stock Chart" class="button-image" style="width: 500px; height: auto;">
+            <div class="button-info">
+                <h3>Stock Chart</h3>
+                <p>View interactive stock charts to analyze historical trends and make informed investment decisions.</p>
+                <a href="stock-chart.html" class="button">Explore</a>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        2024 Stock Website. All rights reserved © Kunwar Harnischay Singh Lahoriya
+    </footer>
+
+    <script>
+        function toggleDetails() {
+            var details = document.getElementsByClassName("details");
+            for (var i = 0; i < details.length; i++) {
+                details[i].classList.toggle("visible");
+            }
+        }
+    </script>
+</body>
+</html>

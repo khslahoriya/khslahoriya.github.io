@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Stock Prices</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        background-image: url('stock_project.jpg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    h1 {
+        text-align: center;
+        color: white; /* Add white text color for better visibility on the background image */
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        color: white; /* Add white text color for better visibility on the background image */
+    }
+    th, td {
+        padding: 8px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+    footer {
+        text-align: center;
+        color: black; /* Set the footer text color to black */
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(255, 255, 255, 0.8); /* Set a semi-transparent white background for better contrast */
+        padding: 10px 0;
+    }
+</style>
+</head>
+<body>
+    <h1>Stock Prices</h1>
+    <table id="stock-table">
+        <thead>
+            <tr>
+                <th>Symbol</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <footer>
+        <p>&copy; 2024 Stock Market Website. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        const apiKey = 'co527h9r01qnik2v8fbgco527h9r01qnik2v8fc0'; // Replace 'YOUR_API_KEY' with your Finnhub API key
+        const stockSymbols = ['AAPL', 'GOOGL', 'MSFT', 'AMZN', 'TSLA', 'FB', 'NVDA', 'PYPL', 'ADBE', 'NFLX'];
+
+        const tableBody = document.querySelector('#stock-table tbody');
+
+        stockSymbols.forEach(symbol => {
+            fetch(`https://finnhub.io/api/v1/quote?symbol=${symbol}&token=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    const row = `<tr><td>${symbol}</td><td>$${data.c.toFixed(2)}</td></tr>`;
+                    tableBody.insertAdjacentHTML('beforeend', row);
+                })
+                .catch(error => {
+                    console.error('Error fetching data:', error);
+                });
+        });
+    </script>
+</body>
+</html>
