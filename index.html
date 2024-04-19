@@ -1,79 +1,79 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>My Portfolio</title>
-    <link rel="stylesheet" type="text/css" href="Kunwar's Webpage.css" />
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#projects">Projects</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-    <main>
-      <section id="about">
-        <h1>ਕੁੰਵਰ ਹਰਨਿਸਚੈ ਸਿੰਘ لاہوریا</h1>
-        <p>
-          This is Kunwar Harnischay Singh Lahoriya and I welcome you to my webpage which outlines some of my computer science projects learned in Comp165.  
-        </p>
-      </section>
-      <section id="projects">
-        <h1>Projects</h1>
-        <ul id="project-tabs">
-            <li><a href="lab2comp165.html">
-              Gatka</a></li>
-            <li><a href="lab3comp165.html">
-              Count
-          </a>
-            </li>
-            <li><a href="lab4comp165.html">
-              Scientific Calculator
-          </a></li>
-        <li>
-          <a href="lab5comp165.html">
-              Weather API
-          </a></li>
-        <li>
-          <a href="lab6comp165.html">
-              Firebase Database
-          </a></li>
-        <li>
-          <a href="lab7comp165.html">
-              Average Calculator
-          </a></li>
-        <li>
-          <a href="lab7FetchData.html">
-              Realtime Chat
-          </a></li>
-        <li><a href="Stock_Website.html">
-              Stock Website
-          </a></li>
-          <li>
-          <a href="lab8comp165.html">
-              Shopping Cart
-          </a></li>
-          
-        </ul>
-        <div id="project-content">
-          <!-- Insert your project pages here. Each page should be hidden by default and only shown when its corresponding tab is clicked. -->
-        </div>
-      </section>
-      <section id="contact">
-        <h1>Contact Me</h1>
-        <p>
-          Insert your contact information here. You can include your email address, social media links, or any other contact information that you want to share.
-        </p>
-      </section>
-    </main>
-    <footer>
+<head>
+  <title>My Portfolio</title>
+  <link rel="stylesheet" type="text/css" href="Kunwar's Webpage.css" />
+  <style>
+    /* New CSS styles for body, main, and footer */
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh; /* Make sure the body takes up at least the full viewport height */
+    }
+
+    main {
+      flex: 1; /* Allow the main content to grow and take up remaining space */
+      display: flex;
+      flex-direction: column;
+    }
+
+    section {
+      flex: 1; /* Each section takes up equal space in the main container */
+    }
+
+    footer {
+      margin-top: auto; /* Push the footer to the bottom */
+      text-align: center;
+      background-color: #333;
+      color: #fff;
+      padding: 10px 0;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <section id="about">
+      <h1>ਕੁੰਵਰ ਹਰਨਿਸਚੈ ਸਿੰਘ لاہوریا</h1>
       <p>
-        &copy; 2023 My Portfolio. All rights reserved.
+        This is Kunwar Harnischay Singh Lahoriya and I welcome you to my webpage which outlines some of my computer science projects learned in Comp165.  
       </p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
+    </section>
+    <section id="projects">
+      <h1>Projects</h1>
+      <ul id="project-tabs">
+        <li><a href="lab2comp165.html">Gatka</a></li>
+        <li><a href="lab3comp165.html">Count</a></li>
+        <li><a href="lab4comp165.html">Scientific Calculator</a></li>
+        <li><a href="lab5comp165.html">Weather API</a></li>
+        <li><a href="lab6comp165.html">Firebase Database</a></li>
+        <li><a href="lab7comp165.html">Average Calculator</a></li>
+        <li><a href="lab7FetchData.html">Realtime Chat</a></li>
+        <li><a href="Stock_Website.html">Stock Website</a></li>
+        <li><a href="lab8comp165.html">Shopping Cart</a></li>
+      </ul>
+      <div id="project-content">
+        <!-- Insert your project pages here. Each page should be hidden by default and only shown when its corresponding tab is clicked. -->
+      </div>
+    </section>
+    <section id="contact">
+      <h1>Contact Me</h1>
+      <p>
+        Insert your contact information here. You can include your email address, social media links, or any other contact information that you want to share.
+      </p>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2023 My Portfolio. All rights reserved.</p>
+  </footer>
+  <script src="script.js"></script>
+</body>
 </html>
