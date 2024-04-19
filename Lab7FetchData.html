@@ -3,6 +3,123 @@
 <head>
     <meta charset="UTF-8">
     <title>Real-time Chat Application</title>
+    <style>
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #3498db, #8e44ad);
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 8px 8px 0 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-container {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.input-container {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+input[type="text"],
+select {
+    width: calc(100% - 24px); /* Adjusted to account for padding */
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    transition: background-color 0.3s ease;
+}
+
+input[type="text"]:focus,
+select:focus {
+    background-color: #eaeaea;
+}
+
+select {
+    appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="%23007bff" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5H7z"/><path d="M0 0h24v24H0z" fill="none"/></svg>') no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 16px;
+}
+
+button {
+    width: calc(100% - 24px); /* Adjusted to account for padding */
+    padding: 12px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#messages {
+    margin-top: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+.message {
+    background-color: #f5f5f5;
+    padding: 12px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.message p {
+    margin: 0;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+    </style>
     <script type="module">
         const databaseUrl = 'https://khsrealtime-default-rtdb.firebaseio.com/chatMsg.json'; 
 
@@ -87,16 +204,24 @@
     </script>
 </head>
 <body>
-    <h1>Real-time Chat Application</h1>
-    <div>
-        <input type="text" id="username" placeholder="Enter your username">
-        <input type="text" id="message" placeholder="Enter your message">
-        <select id="category">
-            <option value="General">General</option>
-            <option value="Priority">Priority</option>
-        </select>
-        <button>Send</button>
+    <div class="container">
+        <h1 class="header">Real-time Chat Application</h1>
+        <div class="form-container">
+            <div class="input-container">
+                <input type="text" id="username" placeholder="Enter your username">
+            </div>
+            <div class="input-container">
+                <input type="text" id="message" placeholder="Enter your message">
+            </div>
+            <div class="input-container">
+                <select id="category">
+                    <option value="General">General</option>
+                    <option value="Priority">Priority</option>
+                </select>
+            </div>
+            <button>Send</button>
+        </div>
+        <div id="messages"></div>
     </div>
-    <p id="messages"></p>
 </body>
 </html>

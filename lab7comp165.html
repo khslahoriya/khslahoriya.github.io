@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>JS variable and function</title>
+        <style>
+            body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 400px;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+}
+
+input[type="text"] {
+    width: calc(100% - 22px);
+    padding: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#average {
+    display: block;
+    margin-top: 20px;
+    font-size: 20px;
+    color: #333;
+}
+
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>We love math! Let's calculate the average.</h1>
+            <label>Your first number:</label>
+            <input type="text" id="first_val" value="0">
+            <br>
+            <label>Your second number:</label>
+            <input type="text" id="second_val" value="0">
+            <br>
+            <button id="result">Calculate Average</button>
+            <span id="average">0</span> 
+        </div>
+        <script src="lab7comp165.js"></script>
+    </body>
+</html>
