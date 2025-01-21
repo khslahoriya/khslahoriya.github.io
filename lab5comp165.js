@@ -1,18 +1,18 @@
-// Function to fetch weather data based on selected city
+// Function to fetch weather data based on city name
 async function fetchWeather(city) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/current.json?key=0861a71976184ff598504953240202&q=${city}&aqi=no`);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('City not found or invalid API response');
         }
         const data = await response.json();
 
-        // Extract relevant weather information from the API response
+        // Extract relevant weather information
         const location = data.location.name + ', ' + data.location.region + ', ' + data.location.country;
         const temperature = data.current.temp_c + '°C';
         const condition = data.current.condition.text;
 
-        // Display current weather information on the webpage
+        // Display weather information
         const weatherContainer = document.getElementById('weather-container');
         weatherContainer.innerHTML = `
             <h2>Current Weather</h2>
@@ -24,26 +24,25 @@ async function fetchWeather(city) {
         // Update the background based on the weather condition
         updateBackground(condition);
 
-        // Fetch and display forecast data
+        // Fetch forecast data
         fetchForecast(city);
     } catch (error) {
         console.error('Error fetching weather data:', error);
-        // Display error message on the webpage
         const weatherContainer = document.getElementById('weather-container');
-        weatherContainer.innerHTML = '<p>Failed to fetch weather data. Please try again later.</p>';
+        weatherContainer.innerHTML = `<p>${error.message}. Please try another city.</p>`;
     }
 }
 
-// Function to fetch forecast data based on selected city
+// Function to fetch forecast data for the city
 async function fetchForecast(city) {
     try {
         const response = await fetch(`https://api.weatherapi.com/v1/forecast.json?key=0861a71976184ff598504953240202&q=${city}&days=7&aqi=no&alerts=no`);
         if (!response.ok) {
-            throw new Error('Network response was not ok');
+            throw new Error('Failed to fetch forecast data');
         }
         const data = await response.json();
 
-        // Extract and display forecast data
+        // Display forecast data
         const forecastContainer = document.getElementById('forecast-container');
         forecastContainer.innerHTML = '<h2>7-Day Forecast</h2>';
         data.forecast.forecastday.forEach(day => {
@@ -57,7 +56,6 @@ async function fetchForecast(city) {
         });
     } catch (error) {
         console.error('Error fetching forecast data:', error);
-        // Display error message on the webpage
         const forecastContainer = document.getElementById('forecast-container');
         forecastContainer.innerHTML = '<p>Failed to fetch forecast data. Please try again later.</p>';
     }
@@ -67,7 +65,6 @@ async function fetchForecast(city) {
 function updateBackground(condition) {
     const body = document.body;
 
-    // Map conditions to background styles
     if (condition.toLowerCase().includes("sunny")) {
         body.style.background = "linear-gradient(135deg, #ffcf70, #ffaf50)";
         body.style.color = "#333";
@@ -87,20 +84,22 @@ function updateBackground(condition) {
         body.style.background = "linear-gradient(135deg, #373b44, #4286f4)";
         body.style.color = "#fff";
     } else {
-        // Default background
         body.style.background = "linear-gradient(135deg, #4facfe, #00f2fe)";
         body.style.color = "#fff";
     }
 }
 
-// Call the fetchWeather function when the page loads
+// Add event listener to fetch weather for user-inputted city
 document.addEventListener('DOMContentLoaded', function () {
-    const cityDropdown = document.getElementById('city');
-    // Add event listener to fetch weather data when the selected city changes
-    cityDropdown.addEventListener('change', function () {
-        const selectedCity = this.value;
-        fetchWeather(selectedCity);
+    const fetchWeatherBtn = document.getElementById('fetch-weather-btn');
+    const cityInput = document.getElementById('city-input');
+
+    fetchWeatherBtn.addEventListener('click', function () {
+        const city = cityInput.value.trim();
+        if (city) {
+            fetchWeather(city);
+        } else {
+            alert('Please enter a city name.');
+        }
     });
-    // Fetch weather data for the initially selected city
-    fetchWeather(cityDropdown.value);
 });
