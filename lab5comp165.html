@@ -4,6 +4,81 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* Header Styling */
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Dropdown Menu */
+        label {
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+
+        select {
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: none;
+            background-color: rgba(255, 255, 255, 0.8);
+            color: #333;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            background-color: rgba(255, 255, 255, 1);
+        }
+
+        /* Weather and Forecast Containers */
+        #weather-container, #forecast-container {
+            background-color: rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 12px;
+            max-width: 600px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            select {
+                font-size: 0.9rem;
+                padding: 8px 10px;
+            }
+
+            #weather-container, #forecast-container {
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 <body>
     <h1>Weather App</h1>
