@@ -3,41 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Weather App</title>
+    <title>Search Any City - Weather App</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            transition: background 0.5s ease, color 0.5s ease;
+            text-align: center;
         }
-        #weather-container, #forecast-container {
-            padding: 20px;
+        .container {
+            margin-top: 50px;
         }
-        .input-container {
-            padding: 20px;
-            display: flex;
-            gap: 10px;
-        }
-        input {
-            padding: 8px;
+        input, button {
+            padding: 10px;
             font-size: 16px;
-            flex: 1;
+            margin: 10px;
         }
-        button {
-            padding: 8px 16px;
-            font-size: 16px;
-            cursor: pointer;
+        #weather-output {
+            margin-top: 20px;
         }
     </style>
 </head>
 <body>
-    <div class="input-container">
-        <input type="text" id="city-input" placeholder="Enter city name..." />
-        <button id="fetch-weather-btn">Get Weather</button>
+    <div class="container">
+        <h1>Weather Search</h1>
+        <input type="text" id="city-input" placeholder="Enter city name">
+        <button id="search-btn">Search</button>
+        <div id="weather-output"></div>
     </div>
-    <div id="weather-container"></div>
-    <div id="forecast-container"></div>
     <script src="script.js"></script>
 </body>
 </html>
