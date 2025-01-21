@@ -1,4 +1,3 @@
-// Function to fetch weather for the entered city
 async function fetchWeather(city) {
     const apiKey = '0861a71976184ff598504953240202&q'; // Replace with your WeatherAPI key
     const baseUrl = 'https://api.weatherapi.com/v1/current.json';
@@ -7,11 +6,16 @@ async function fetchWeather(city) {
         // Fetch the weather data
         const response = await fetch(`${baseUrl}?key=${apiKey}&q=${city}&aqi=no`);
         
+        console.log(response.status); // Logs the status code (200, 404, etc.)
+        const responseText = await response.text();  // Get the raw response text
+        console.log(responseText); // Logs the response text to see what's returned
+
         if (!response.ok) {
             throw new Error('City not found. Please try again.');
         }
 
         const data = await response.json();
+        console.log(data); // Check the structure of the response
 
         // Display weather information
         const weatherOutput = document.getElementById('weather-output');
