@@ -22,7 +22,7 @@ async function fetchWeather(city) {
         `;
 
         // Update the background based on the weather condition
-        updateBackground(data.current.condition.text);
+        updateBackground(condition);
 
         // Fetch and display forecast data
         fetchForecast(city);
@@ -67,39 +67,29 @@ async function fetchForecast(city) {
 function updateBackground(condition) {
     const body = document.body;
 
-    switch (condition.toLowerCase()) {
-        case "sunny":
-            body.style.background = "linear-gradient(135deg, #ffcf70, #ffaf50)";
-            body.style.color = "#333";
-            break;
-        case "partly cloudy":
-        case "cloudy":
-            body.style.background = "linear-gradient(135deg, #d3d3d3, #a6a6a6)";
-            body.style.color = "#fff";
-            break;
-        case "rain":
-        case "light rain":
-        case "heavy rain":
-            body.style.background = "linear-gradient(135deg, #4f86f7, #2e4cb2)";
-            body.style.color = "#fff";
-            break;
-        case "snow":
-            body.style.background = "linear-gradient(135deg, #ffffff, #cce7ff)";
-            body.style.color = "#333";
-            break;
-        case "fog":
-        case "mist":
-            body.style.background = "linear-gradient(135deg, #b8c6db, #f5f7fa)";
-            body.style.color = "#333";
-            break;
-        case "thunderstorm":
-            body.style.background = "linear-gradient(135deg, #373b44, #4286f4)";
-            body.style.color = "#fff";
-            break;
-        default:
-            body.style.background = "linear-gradient(135deg, #4facfe, #00f2fe)";
-            body.style.color = "#fff";
-            break;
+    // Map conditions to background styles
+    if (condition.toLowerCase().includes("sunny")) {
+        body.style.background = "linear-gradient(135deg, #ffcf70, #ffaf50)";
+        body.style.color = "#333";
+    } else if (condition.toLowerCase().includes("cloudy") || condition.toLowerCase().includes("overcast")) {
+        body.style.background = "linear-gradient(135deg, #d3d3d3, #a6a6a6)";
+        body.style.color = "#fff";
+    } else if (condition.toLowerCase().includes("rain")) {
+        body.style.background = "linear-gradient(135deg, #4f86f7, #2e4cb2)";
+        body.style.color = "#fff";
+    } else if (condition.toLowerCase().includes("snow")) {
+        body.style.background = "linear-gradient(135deg, #ffffff, #cce7ff)";
+        body.style.color = "#333";
+    } else if (condition.toLowerCase().includes("fog") || condition.toLowerCase().includes("mist")) {
+        body.style.background = "linear-gradient(135deg, #b8c6db, #f5f7fa)";
+        body.style.color = "#333";
+    } else if (condition.toLowerCase().includes("thunder")) {
+        body.style.background = "linear-gradient(135deg, #373b44, #4286f4)";
+        body.style.color = "#fff";
+    } else {
+        // Default background
+        body.style.background = "linear-gradient(135deg, #4facfe, #00f2fe)";
+        body.style.color = "#fff";
     }
 }
 
