@@ -5,100 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather App</title>
     <style>
-        /* General Reset */
-        * {
+        body {
+            font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            box-sizing: border-box;
+            transition: background 0.5s ease, color 0.5s ease;
         }
-
-        /* Body Styling */
-        body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #4facfe, #00f2fe);
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        /* Header Styling */
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        }
-
-        /* Dropdown Menu */
-        label {
-            font-size: 1.2rem;
-            margin-right: 10px;
-        }
-
-        select {
-            font-size: 1rem;
-            padding: 10px 15px;
-            border-radius: 8px;
-            border: none;
-            background-color: rgba(255, 255, 255, 0.8);
-            color: #333;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        select:hover {
-            background-color: rgba(255, 255, 255, 1);
-        }
-
-        /* Weather and Forecast Containers */
         #weather-container, #forecast-container {
-            background-color: rgba(0, 0, 0, 0.3);
             padding: 20px;
-            margin: 20px auto;
-            border-radius: 12px;
-            max-width: 600px;
-            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
         }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-
-            h1 {
-                font-size: 2rem;
-            }
-
-            select {
-                font-size: 0.9rem;
-                padding: 8px 10px;
-            }
-
-            #weather-container, #forecast-container {
-                padding: 15px;
-            }
+        .input-container {
+            padding: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        input {
+            padding: 8px;
+            font-size: 16px;
+            flex: 1;
+        }
+        button {
+            padding: 8px 16px;
+            font-size: 16px;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
-    <h1>Weather App</h1>
-    <!-- Add dropdown menu for cities -->
-    <label for="city">Select a city:</label>
-    <select id="city">
-        <option value="Vancouver">Vancouver</option>
-        <option value="New York">New York</option>
-        <option value="London">London</option>
-        <!-- Add more cities here as needed -->
-    </select>
-
-    <div id="weather-container">
-        <!-- Weather data will be displayed here -->
+    <div class="input-container">
+        <input type="text" id="city-input" placeholder="Enter city name..." />
+        <button id="fetch-weather-btn">Get Weather</button>
     </div>
-
-    <div id="forecast-container">
-        <!-- Forecast data will be displayed here -->
-    </div>
-
-    <script src="lab5comp165.js"></script>
+    <div id="weather-container"></div>
+    <div id="forecast-container"></div>
+    <script src="script.js"></script>
 </body>
 </html>
