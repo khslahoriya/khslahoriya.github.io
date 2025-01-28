@@ -1,21 +1,27 @@
 async function fetchWeather(city) {
-    const apiKey = '0861a71976184ff598504953240202'; // Replace with your WeatherAPI key
+    const apiKey = 'YOUR_ACTUAL_API_KEY'; // Replace with your actual WeatherAPI key
     const baseUrl = 'https://api.weatherapi.com/v1/current.json';
 
     try {
-        // Fetch the weather data
-        const response = await fetch(`${baseUrl}?key=${apiKey}&q=${city}&aqi=no`);
+        // Construct the URL
+        const url = `${baseUrl}?key=${apiKey}&q=${city}&aqi=no`;
+        console.log("Request URL:", url); // Log the request URL to check it
         
-        console.log(response.status); // Logs the status code (200, 404, etc.)
-        const responseText = await response.text();  // Get the raw response text
-        console.log(responseText); // Logs the response text to see what's returned
+        // Fetch the weather data
+        const response = await fetch(url);
+        
+        // Log the response status
+        console.log('Response Status:', response.status);
 
         if (!response.ok) {
+            const errorText = await response.text(); // Log the raw error response
+            console.error('Error Response:', errorText);
             throw new Error('City not found. Please try again.');
         }
 
+        // Parse the JSON response
         const data = await response.json();
-        console.log(data); // Check the structure of the response
+        console.log('API Response:', data); // Check the structure of the response
 
         // Display weather information
         const weatherOutput = document.getElementById('weather-output');
@@ -28,7 +34,7 @@ async function fetchWeather(city) {
             <p><strong>Wind:</strong> ${data.current.wind_kph} km/h</p>
         `;
     } catch (error) {
-        // Handle errors (e.g., invalid city name)
+        console.error('Fetch Error:', error);
         const weatherOutput = document.getElementById('weather-output');
         weatherOutput.innerHTML = `<p>${error.message}</p>`;
     }
