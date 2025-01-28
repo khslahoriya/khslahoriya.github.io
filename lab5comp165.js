@@ -1,5 +1,5 @@
 async function fetchWeather(city) {
-    const apiKey = 'YOUR_ACTUAL_API_KEY'; // Replace with your actual WeatherAPI key
+    const apiKey = '0861a71976184ff598504953240202'; // Replace with your actual WeatherAPI key
     const baseUrl = 'https://api.weatherapi.com/v1/current.json';
 
     try {
